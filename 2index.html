@@ -5,11 +5,11 @@
     <title>token</title>
     <script>
 var tokenid=localStorage.getItem('tokenidtestls');
-document.title= 'token-' + tokenid + 'todownload';
+document.title= 'token-' + ${tokenid} + 'todownload';
     </script>
 </head> 
 <body>
-<p id=’bunsyou’>。</p>
+<p id=’bunsyou’>トークン:${tokenid}のファイルをダウンロードしています。</p>
     <script>
 document.getElementById(‘bunsyou’).textContent = ‘トークン:${tokenid}のファイルをダウンロードしています’
     </script>
