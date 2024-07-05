@@ -5,18 +5,17 @@
     <title>token</title>
     <script>
 var tokenid=localStorage.getItem('tokenidtestls');
-document.title= 'token-' + tokenid + 'todownload'';
+document.title= 'token-' + tokenid + 'todownload';
     </script>
 </head> 
 <body>
-<p id=’bunsyou’></p>
+<p id=’bunsyou’>。</p>
     <script>
-document.getElementById(‘bunsyou’).textContent = ‘トークン:${tokenid}のファイルをダウンロードしています。’
+document.getElementById(‘bunsyou’).textContent = ‘トークン:${tokenid}のファイルをダウンロードしています’
     </script>
     <script>
   downloadByURL(url: string) {
     const link = document.createElement('a')
-    link.download = 'result.csv'
     link.href = url
     link.click()
   }
