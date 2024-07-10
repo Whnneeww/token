@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-  <title>カメラで写真を撮る</title> 
+  <title>カメラで写真を撮る（背面カメラ）</title> 
 </head> 
 <body> 
  
@@ -14,8 +14,8 @@
     const captureButton = document.getElementById('captureButton'); 
     const canvas = document.getElementById('canvas'); 
  
-    // カメラへのアクセス要求 
-    navigator.mediaDevices.getUserMedia({ video: true }) 
+    // カメラへのアクセス要求（背面カメラ指定） 
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }) 
       .then(stream => { 
         video.srcObject = stream; 
       }) 
