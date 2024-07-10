@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>カメラで写真を撮る</title> 
+</head> 
+<body> 
+ 
+  <video id="video" width="640" height="480"></video> 
+  <button id="captureButton">写真を撮る</button> 
+  <canvas id="canvas" width="640" height="480" style="display: none;"></canvas> 
+ 
+  <script> 
+    const video = document.getElementById('video'); 
+    const captureButton = document.getElementById('captureButton'); 
+    const canvas = document.getElementById('canvas'); 
+ 
+    // カメラへのアクセス要求 
+    navigator.mediaDevices.getUserMedia({ video: true }) 
+      .then(stream => { 
+        video.srcObject = stream; 
+      }) 
+      .catch(err => { 
+        console.error('カメラアクセスエラー:', err); 
+      }); 
+ 
+    captureButton.addEventListener('click', () => { 
+      // Canvasに動画を描き出す 
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); 
+ 
+      // キャンバスの内容をDataURLとして取得 
+      const dataURL = canvas.toDataURL('image/png'); 
+ 
+      // 画像を表示する 
+      const img = document.createElement('img'); 
+      img.src = dataURL; 
+      document.body.appendChild(img); 
+    }); 
+  </script> 
+ 
+</body> 
+</html> 
