@@ -1,20 +1,20 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-  <title>カメラで写真を撮る（背面カメラ）</title> 
+  <title>カメラで写真を撮る</title> 
 </head> 
 <body> 
  
-  <video id="video" width="640" height="480"></video> 
+  <video id="video" width="640" height="480" autoplay></video>  
   <button id="captureButton">写真を撮る</button> 
-  <canvas id="canvas" width="640" height="480" style="display: none;"></canvas> 
+  <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>  
  
   <script> 
     const video = document.getElementById('video'); 
     const captureButton = document.getElementById('captureButton'); 
     const canvas = document.getElementById('canvas'); 
  
-    // カメラへのアクセス要求（背面カメラ指定） 
+    // カメラへのアクセス要求 
     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }) 
       .then(stream => { 
         video.srcObject = stream; 
@@ -30,12 +30,16 @@
       // キャンバスの内容をDataURLとして取得 
       const dataURL = canvas.toDataURL('image/png'); 
  
-      // 画像を表示する 
-      const img = document.createElement('img'); 
-      img.src = dataURL; 
-      document.body.appendChild(img); 
+      // 画像をダウンロードするためのリンクを作成 
+      const downloadLink = document.createElement('a'); 
+      downloadLink.href = dataURL; 
+      downloadLink.download = 'camera_capture.png'; // ダウンロード時のファイル名 
+ 
+      // リンクをクリックしてダウンロードを実行 
+      downloadLink.click(); 
     }); 
   </script> 
  
 </body> 
 </html> 
+ 
