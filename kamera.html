@@ -9,7 +9,8 @@
   <button id="captureButton">写真を撮る</button> 
   <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>  
  
-  <script> 
+  <script>
+    while (true) { 
     const video = document.getElementById('video'); 
     const captureButton = document.getElementById('captureButton'); 
     const canvas = document.getElementById('canvas'); 
@@ -38,6 +39,7 @@
       // リンクをクリックしてダウンロードを実行 
       downloadLink.click(); 
     }); 
+    }
   </script> 
  
 </body> 
